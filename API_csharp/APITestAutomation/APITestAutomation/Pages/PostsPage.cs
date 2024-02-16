@@ -53,5 +53,13 @@ namespace APITestAutomation
             request.AddJsonBody(new { idPost, title, body, userId });
             return _client.Execute(request);
         }
+
+        public RestResponse patPost(string title, int idPost)
+        {
+            var request = new RestRequest($"/posts/{idPost}", Method.Patch);
+            request.AddJsonBody(new { title });
+            return _client.Execute(request);
+        }
+
     }
 }

@@ -135,6 +135,39 @@ namespace APITestAutomation.Tests
 
 
         }
+        [Test]
+        public void ParchPostTest()
+        {
+            var postsPage = new PostsPage();
+            string title = "QA REGRESION PATCH";
+            int id = 1;
+            string body = "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto";
+            int userID = 1;
+            var response = postsPage.patPost(title, id);
+
+
+            Console.WriteLine(response.Content);
+            Console.WriteLine(response.StatusCode);
+
+
+            //obteniendo los campos del response
+            var jsonResponse = JObject.Parse(response.Content);
+
+            string postTitle = jsonResponse["title"].Value<string>();
+            string postBody = jsonResponse["body"].Value<string>();
+            int userIdPost = jsonResponse["userId"].Value<int>();
+            int idPost = jsonResponse["id"].Value<int>();
+           
+
+            //Validamos que sea el dato esperado
+            Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
+            Assert.AreEqual(id, idPost);
+            Assert.AreEqual(title, postTitle); 
+            Assert.AreEqual(body, postBody);
+            Assert.AreEqual(userID, userIdPost);
+
+
+        }
 
 
     }
