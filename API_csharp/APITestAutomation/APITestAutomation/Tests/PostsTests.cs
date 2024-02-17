@@ -168,7 +168,27 @@ namespace APITestAutomation.Tests
 
 
         }
+        [Test]
+        public void GetCommentsTest()//en este validaremos una respuesta con varios nodos
+        {
+            var postsRequests = new PostsRequest();
+            int id = 1;
+            var response = postsRequests.GetPostComment(id);
 
+
+            Console.WriteLine(response.Content);
+            Console.WriteLine(response.StatusCode);
+            //obteniendo los campos del response
+
+            var jsonResponse = JArray.Parse(response.Content); //En este caso utilizamos un array para almacenar
+
+            bool isIdCorrect = jsonResponse.All(item => (int)item["postId"] == 1);
+            Assert.IsTrue(isIdCorrect,$"Al menos un elmento no pertenece al post con el id: {id}");
+            Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
+
+
+
+        }
 
     }
 }

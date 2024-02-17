@@ -17,7 +17,7 @@ namespace APITestAutomation
         public PostsRequest()
         {
             //Endpoint del API de pruebas
-            string apiEndPoint = ConfigurationManager.AppSettings["ApiEndpoint"];
+            string apiEndPoint = ConfigurationManager.AppSettings["PostApiEndpoint"];
             _client = new RestClient(apiEndPoint);
         }
 
@@ -62,7 +62,7 @@ namespace APITestAutomation
             request.AddJsonBody(new { title });
             return _client.Execute(request);
         }
-        public RestResponse GetPostComment(string title, int idPost)
+        public RestResponse GetPostComment( int idPost)
         {
             var request = new RestRequest($"/posts/{idPost}/comments", Method.Get);
             return _client.Execute(request);
