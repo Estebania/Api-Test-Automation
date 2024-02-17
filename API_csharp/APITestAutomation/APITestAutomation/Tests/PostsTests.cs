@@ -13,6 +13,7 @@ namespace APITestAutomation.Tests
     {
         private int _idpost; //para elimara el post creado
         [Test]
+
         public void GetPostsTest()
         {
             var postsRequests = new PostsRequest();
