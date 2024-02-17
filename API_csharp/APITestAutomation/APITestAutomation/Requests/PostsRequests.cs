@@ -8,12 +8,12 @@ using RestSharp.Extensions;
 
 namespace APITestAutomation
 {
-    public class PostsPage
+    public class PostsRequest
     {
         private readonly RestClient _client;
        
 
-        public PostsPage()
+        public PostsRequest()
         {
             //Endpoint del API de pruebas
             _client = new RestClient("https://jsonplaceholder.typicode.com");
@@ -60,6 +60,12 @@ namespace APITestAutomation
             request.AddJsonBody(new { title });
             return _client.Execute(request);
         }
+        public RestResponse GetPostComment(string title, int idPost)
+        {
+            var request = new RestRequest($"/posts/{idPost}/comments", Method.Get);
+            return _client.Execute(request);
+        }
+
 
     }
 }

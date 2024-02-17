@@ -15,8 +15,8 @@ namespace APITestAutomation.Tests
         [Test]
         public void GetPostsTest()
         {
-            var postsPage = new PostsPage();
-            var response = postsPage.GetPosts();
+            var postsRequests = new PostsRequest();
+            var response = postsRequests.GetPosts();
 
             // Agrega aquí las aserciones para verificar la respuesta
             Console.WriteLine(response.Content);
@@ -28,8 +28,8 @@ namespace APITestAutomation.Tests
         [Test]
         public void GetStatusCodeTest()
         {
-            var postsPage = new PostsPage();
-            var response = postsPage.GetPosts();
+            var postsRequests = new PostsRequest();
+            var response = postsRequests.GetPosts();
 
             // Agrega aquí las aserciones para verificar la respuesta
             Console.WriteLine(response.Content);
@@ -42,9 +42,9 @@ namespace APITestAutomation.Tests
         [Test]
         public void GetPostByIdTest()
         {
-            var postsPage = new PostsPage();
+            var postsRequests = new PostsRequest();
             string id = "38";
-            var response = postsPage.GetPostByID(id);
+            var response = postsRequests.GetPostByID(id);
 
             // Agrega aquí las aserciones para verificar la respuesta
             Console.WriteLine(response.Content);
@@ -61,12 +61,12 @@ namespace APITestAutomation.Tests
         [Test]
         public void PostNewTest()
         {
-            var postsPage = new PostsPage();
+            var postsRequests = new PostsRequest();
             string title = "QA REGRESION POST";
             string body = "Esto es solo un ejercicio";
             int userID = 12;
 
-            var response = postsPage.PostNewPost(title,body, userID);
+            var response = postsRequests.PostNewPost(title,body, userID);
 
             
             Console.WriteLine(response.Content);
@@ -89,9 +89,9 @@ namespace APITestAutomation.Tests
         [Test]
         public void DeleteNewPostTest()
         {
-            var postsPage = new PostsPage();
+            var postsRequests = new PostsRequest();
 
-            var response = postsPage.DeleteNewPost(this._idpost.ToString());
+            var response = postsRequests.DeleteNewPost(this._idpost.ToString());
 
 
             Console.WriteLine(response.Content);
@@ -108,11 +108,11 @@ namespace APITestAutomation.Tests
         [Test]
         public void PutPostTest()
         {
-            var postsPage = new PostsPage();
+            var postsRequests = new PostsRequest();
             string title = "QA REGRESION POST";
             string body = "Esto es solo un ejercicio";
             int userID = 12;
-            var response = postsPage.PutPost(this._idpost,title,body,userID);
+            var response = postsRequests.PutPost(this._idpost,title,body,userID);
 
 
             Console.WriteLine(response.Content);
@@ -138,12 +138,12 @@ namespace APITestAutomation.Tests
         [Test]
         public void ParchPostTest()
         {
-            var postsPage = new PostsPage();
+            var postsRequests = new PostsRequest();
             string title = "QA REGRESION PATCH";
             int id = 1;
             string body = "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto";
             int userID = 1;
-            var response = postsPage.patPost(title, id);
+            var response = postsRequests.patPost(title, id);
 
 
             Console.WriteLine(response.Content);

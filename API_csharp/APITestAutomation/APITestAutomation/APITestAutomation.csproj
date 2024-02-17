@@ -106,8 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Handlers\ApiTestHandlerMetgods.cs" />
-    <Compile Include="Pages\PostsPage.cs" />
+    <Compile Include="Requests\PostsRequests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\PostsTests.cs" />
   </ItemGroup>
