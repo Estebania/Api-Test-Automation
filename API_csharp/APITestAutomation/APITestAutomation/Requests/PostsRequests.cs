@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Extensions;
+using System.Configuration;//Para leer los endpoinds del app.config
 
 namespace APITestAutomation
 {
@@ -16,7 +17,8 @@ namespace APITestAutomation
         public PostsRequest()
         {
             //Endpoint del API de pruebas
-            _client = new RestClient("https://jsonplaceholder.typicode.com");
+            string apiEndPoint = ConfigurationManager.AppSettings["ApiEndpoint"];
+            _client = new RestClient(apiEndPoint);
         }
 
         public RestResponse GetPosts()
